@@ -1,0 +1,31 @@
+<div class="header">
+	<div>
+		<img src="../../../assets/images/logo.jpg" class="logo" height="100%" width="auto" />
+	</div>
+	<div>
+		<div class="icons">
+			<span>{{userLogged.name}}</span>
+			<button mat-icon-button>
+				<mat-icon>account_circle</mat-icon>
+			</button>
+			<span>Menú</span>
+			<button mat-icon-button [matMenuTriggerFor]="menu">
+				<mat-icon>more_vert</mat-icon>
+			</button>
+		</div>
+		<mat-menu #menu="matMenu">
+			<button mat-menu-item routerLink="/home/publication">
+				<mat-icon>dialpad</mat-icon>
+				<span>Mis publicaciones</span>
+			</button>
+			<button mat-menu-item routerLink="/home/all">
+				<mat-icon>voicemail</mat-icon>
+				<span>Todas las publicaciones</span>
+			</button>
+			<button mat-menu-item (click)="onLogout()">
+				<mat-icon>logout</mat-icon>
+				<span>Cerrar sesión</span>
+			</button>
+		</mat-menu>
+	</div>
+</div>

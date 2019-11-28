@@ -1,0 +1,40 @@
+<div class="content">
+  <div class="content-main">
+    <div class="align-title">
+      <div class="title">
+        Publicaciones de otros usuarios
+      </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="content-list">
+      <div class="content-item" *ngFor="let publication of publications">
+        <mat-card class="card">
+          <mat-card-header>
+            <div mat-card-avatar class="header-image"></div>
+            <mat-card-title>{{publication.title}}</mat-card-title>
+            <mat-card-subtitle>{{publication.user.email}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src={{publication.imageUrl}} alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>{{publication.description}}</p>
+            <p>{{publication.ubication}}</p>
+            <h5>{{publication.price | currency: 'USD'}}</h5>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>
+              <mat-icon>thumb_up</mat-icon>
+            </button>
+            <button mat-button>
+              <mat-icon>shopping_cart</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+    <div class="no-results" *ngIf="showResults">
+      No existen publicaciones creadas.
+    </div>
+  </div>
+</div>

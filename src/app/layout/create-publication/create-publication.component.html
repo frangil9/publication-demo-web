@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Crear publicación</h1>
+<div mat-dialog-content>
+  <form [formGroup]="myForm">
+    <div class="form-content">
+      <mat-form-field>
+        <input matInput name="title" placeholder="Titulo" formControlName="title">
+        <mat-error *ngIf="myForm.get('title').hasError('required')">
+          Ingresa un titulo.
+        </mat-error>
+        <mat-error *ngIf="myForm.get('title').hasError('minlength')">
+          El titulo debe contener minimo 2 caracteres.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput name="description" placeholder="Descripción" formControlName="description"></textarea>
+        <mat-error *ngIf="myForm.get('description').hasError('required')">
+          Ingresa una descripción.
+        </mat-error>
+        <mat-error *ngIf="myForm.get('description').hasError('minlength')">
+          La descripción debe contener minimo 2 caracteres.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="number" name="price" placeholder="Precio" formControlName="price">
+        <mat-error *ngIf="myForm.get('price').hasError('required')">
+          Ingresa un Precio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput name="ubication" placeholder="Ubicación" formControlName="ubication"></textarea>
+        <mat-error *ngIf="myForm.get('ubication').hasError('required')">
+          Ingresa una ubicación.
+        </mat-error>
+        <mat-error *ngIf="myForm.get('ubication').hasError('minlength')">
+          La ubicación debe contener minimo 2 caracteres.
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+  <div class="form-content">
+    <dropzone [disabled]="image !== null" [config]="config" [message]="'Click or drag images here to upload'"
+      (removedFile)="onUploadCancel($event)" (error)="onUploadError($event)" (success)="onUploadSuccess($event)">
+    </dropzone>
+  </div>
+</div>
+<div mat-dialog-actions class="justify-right">
+  <button mat-button (click)="onClose()">Cancelar</button>
+  <button mat-flat-button color="primary" [disabled]="!myForm.valid || image === null" (click)="onSubmit()"
+    cdkFocusInitial>Publicar</button>
+</div>
