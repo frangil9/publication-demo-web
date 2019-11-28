@@ -1,3 +1,3 @@
 const properties = {
-    apiUrl: '.'
+    apiUrl: 'http://localhost:3002/api'
 }
